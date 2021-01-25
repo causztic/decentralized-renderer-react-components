@@ -14,7 +14,8 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@govtechsg/open-attestation": "^4.6.0",
     "debug": "^4.1.1",
-    "penpal": "^4.1.1",
+    "penpal-v4": "npm:penpal@^4.1.1",
+    "penpal": "^5.3.0",
     "react-pdf": "^4.1.0",
     "typesafe-actions": "^4.4.2"
   },
