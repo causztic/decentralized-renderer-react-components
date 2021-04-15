@@ -10,8 +10,13 @@ export const renderDocument = createStandardAction("RENDER_DOCUMENT")<{
 export const selectTemplate = createStandardAction("SELECT_TEMPLATE")<string>();
 export const getTemplates = createStandardAction("GET_TEMPLATES")<OpenAttestationDocument>();
 export const print = createStandardAction("PRINT")();
+export const downloadPDF = createStandardAction("DOWNLOAD_PDF")<{
+  document: OpenAttestationDocument;
+  rawDocument?: WrappedDocument<OpenAttestationDocument>;
+}>();
+
 export type HostActions = ActionType<
-  typeof renderDocument | typeof selectTemplate | typeof getTemplates | typeof print
+  typeof renderDocument | typeof selectTemplate | typeof getTemplates | typeof print | typeof downloadPDF
 >;
 export type HostActionsHandler = (action: HostActions) => void;
 

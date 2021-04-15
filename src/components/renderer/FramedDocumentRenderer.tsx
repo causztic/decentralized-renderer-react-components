@@ -1,4 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
+import html2canvas from 'html2canvas';
+import { jsPDF } from "jspdf";
 import { Attachment, TemplateRegistry } from "../../types";
 import { documentTemplates, noop } from "../../utils";
 import { getLogger } from "../../logger";
@@ -80,7 +82,7 @@ export function FramedDocumentRenderer({
       } else if (action.type === "GET_TEMPLATES") {
         const templates = documentTemplates(
           action.payload,
-          templateRegistry as TemplateRegistry<OpenAttestationDocument>,
+        templateRegistry as TemplateRegistry<OpenAttestationDocument>,
           attachmentToComponent
         ).map((template) => ({
           id: template.id,
@@ -91,6 +93,20 @@ export function FramedDocumentRenderer({
         return templates; // react-native expect to get the result directly
       } else if (action.type === "PRINT") {
         window.print();
+      } else if (action.type === "DOWNLOAD_PDF") {
+        var cert = window.document.getElementById("rendered-certificate");
+
+        if (cert) {
+          html2canvas(cert).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF("p", "mm", "a4");
+
+            let width = pdf.internal.pageSize.getWidth();
+            let height = pdf.internal.pageSize.getHeight();
+            pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+            pdf.save("download.pdf");
+          });
+        }
       } else {
         throw new Error(`Action ${JSON.stringify(action)} is not handled`);
       }

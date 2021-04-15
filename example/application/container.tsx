@@ -116,7 +116,10 @@ export const AppContainer: React.FunctionComponent<AppProps> = ({ documents }): 
           onClick={() => {
             if (toFrame) {
               toFrame({
-                type: "PRINT",
+                type: "DOWNLOAD_PDF",
+                payload: {
+                  document: document.document,
+                },
               });
             }
           }}
