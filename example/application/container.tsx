@@ -124,7 +124,7 @@ export const AppContainer: React.FunctionComponent<AppProps> = ({ documents }): 
             }
           }}
         >
-          Print
+          Download
         </button>
       </ActionsContainer>
       <FrameContainer>
