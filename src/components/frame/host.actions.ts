@@ -12,10 +12,7 @@ export const getTemplates = createStandardAction("GET_TEMPLATES")<OpenAttestatio
 export const print = createStandardAction("PRINT")();
 
 // I think we can just remove the argument typing, so we are just downloading the html
-export const downloadPDF = createStandardAction("DOWNLOAD_PDF")<{
-  document: OpenAttestationDocument;
-  rawDocument?: WrappedDocument<OpenAttestationDocument>;
-}>();
+export const downloadPDF = createStandardAction("DOWNLOAD_PDF")();
 
 export type HostActions = ActionType<
   typeof renderDocument | typeof selectTemplate | typeof getTemplates | typeof print | typeof downloadPDF
