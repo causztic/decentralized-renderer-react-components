@@ -6,10 +6,12 @@
 import CustomTemplate from "./customTemplate";
 import GovTechDemoCert from "./govtechDemoCert";
 import DriverLicense from "./driverLicense";
+import {templates as HealthCert} from './healthcert/index';
 
 export const registry = {
   CUSTOM_TEMPLATE: CustomTemplate,
   GOVTECH_DEMO: GovTechDemoCert,
   DRIVER_LICENSE: DriverLicense,
+  HEALTH_CERT: HealthCert,
   NULL: [],
 };
