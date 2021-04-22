@@ -11,17 +11,19 @@ import { TemplateProps } from "../../../../src";
 
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 
-export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocument> & {
-  className?: string;
-}> = ({ document, className = "" }) => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient");
-  const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
+export const HealthCertTemplate: FunctionComponent<
+  TemplateProps<HealthCertDocument> & {
+    className?: string;
+  }
+> = ({ document, className = "" }) => {
+  const patient = document.fhirBundle.entry.find((entry) => entry.resourceType === "Patient");
+  const observations = document.fhirBundle.entry.filter((entry) => entry.resourceType === "Observation");
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
   const patientNricIdentifier = patient?.identifier?.find(isNric);
   const patientNationality = patient?.extension?.find(
-    extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+    (extension) => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
   );
 
   const url = (document.notarisationMetadata as any)?.url;
@@ -39,7 +41,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
       performerName,
       performerMcr,
       observationDate,
-      testResult
+      testResult,
     } = extractInfo(observation, document);
 
     memoSections.push(

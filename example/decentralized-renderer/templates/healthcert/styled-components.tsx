@@ -9,7 +9,7 @@ export const mediaQueries: Record<string, string> = {
   lg: `@media (min-width: ${1024}px)`,
   xl: `@media (min-width: ${1280}px)`,
   "2xl": `@media (min-width: ${1536}px)`,
-  print: `@media print`
+  print: `@media print`,
 };
 
 export const Background = styled.div`

@@ -6,7 +6,7 @@
 import CustomTemplate from "./customTemplate";
 import GovTechDemoCert from "./govtechDemoCert";
 import DriverLicense from "./driverLicense";
-import {templates as HealthCert, vaccinationCertTemplates as VacCert} from './healthcert/index';
+import { templates as HealthCert, vaccinationCertTemplates as VacCert } from "./healthcert/index";
 
 export const registry = {
   CUSTOM_TEMPLATE: CustomTemplate,

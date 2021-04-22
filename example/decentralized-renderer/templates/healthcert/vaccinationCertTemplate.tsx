@@ -11,18 +11,20 @@ const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== 
 const simplifyImmunizationObjects = (immunization: Immunization): SimpleImmunizationObject => ({
   vaccineName: immunization.vaccineCode.coding[0].display,
   vaccineLot: immunization.lotNumber,
-  vaccinationDate: immunization.occurrenceDateTime
+  vaccinationDate: immunization.occurrenceDateTime,
 });
 
-export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
-  className?: string;
-}> = ({ document, className = "" }) => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;
+export const VaccinationCertTemplate: FunctionComponent<
+  TemplateProps<NotarisedHealthCert> & {
+    className?: string;
+  }
+> = ({ document, className = "" }) => {
+  const patient = document.fhirBundle.entry.find((entry) => entry.resourceType === "Patient") as healthcert.Patient;
   const immunizations = document.fhirBundle.entry.filter(
-    entry => entry.resourceType === "Immunization"
+    (entry) => entry.resourceType === "Immunization"
   ) as Immunization[];
   const recommendation = document.fhirBundle.entry.find(
-    entry => entry.resourceType === "ImmunizationRecommendation"
+    (entry) => entry.resourceType === "ImmunizationRecommendation"
   ) as ImmunizationRecommendation;
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
@@ -30,7 +32,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
   const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
     patient?.extension?.find(
-      extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+      (extension) => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code?.text || "";
   const patientBirthDate = patient.birthDate || "";
   const effectiveDate = recommendation?.recommendation?.[0]?.dateCriterion?.[0]?.value;

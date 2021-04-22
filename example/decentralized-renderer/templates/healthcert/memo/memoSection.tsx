@@ -11,7 +11,7 @@ import {
   ResultSection,
   TestResult,
   Doctor,
-  Bold
+  Bold,
 } from "../styled-components";
 import nationalities from "i18n-nationality";
 import englishNationalities from "i18n-nationality/langs/en.json";
@@ -56,7 +56,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
   passportNumber,
   patient,
   patientNricIdentifier,
-  testResult
+  testResult,
 }) => {
   return (
     <div>
@@ -90,12 +90,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
-          <SecondCol>
-            {patient?.birthDate
-              ?.split("-")
-              .reverse()
-              .join("/")}
-          </SecondCol>
+          <SecondCol>{patient?.birthDate?.split("-").reverse().join("/")}</SecondCol>
         </Row>
       </PatientDetails>
       <ResultSection>
@@ -153,7 +148,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
   patientBirthDate,
   passportNumber,
   immunizations,
-  effectiveDate
+  effectiveDate,
 }) => {
   return (
     <div>
