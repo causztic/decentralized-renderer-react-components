@@ -28,6 +28,7 @@ const ActionsContainer = styled.div`
     background-color: #4299e1;
     cursor: pointer;
     border: 0;
+    margin-right: 0.5em;
   }
   button: hover {
     background-color: #2b6cb0;
@@ -122,6 +123,17 @@ export const AppContainer: React.FunctionComponent<AppProps> = ({ documents }): 
           }}
         >
           Download
+        </button>
+        <button
+          onClick={() => {
+            if (toFrame) {
+              toFrame({
+                type: "PRINT",
+              });
+            }
+          }}
+        >
+          Print
         </button>
       </ActionsContainer>
       <FrameContainer>

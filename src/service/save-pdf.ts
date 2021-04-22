@@ -11,7 +11,7 @@ const getDimensionsToCenterImage = (doc: jsPDF, canvas: HTMLCanvasElement) => {
   const widthRatio = pageWidth / canvas.width;
   const heightRatio = pageHeight / canvas.height;
   let ratio = Math.min(widthRatio, heightRatio);
-  ratio = 0.95 * ratio;
+  ratio = 0.98 * ratio;
 
   const canvasWidth = canvas.width * ratio;
   const canvasHeight = canvas.height * ratio;
