@@ -21,11 +21,11 @@
     "jspdf": "^2.3.1",
     "penpal": "^4.1.1",
     "qrcode.react": "^1.0.1",
-    "react-pdf": "^4.1.0",
+    "react-pdf": "^5.2.0",
     "typesafe-actions": "^4.4.2"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --mode production && tsc --module es6 --declaration --outDir build/esm",
+    "build": "cross-env NODE_ENV=production webpack --mode production && tsc --module es6 --declaration --outDir build/esm",
     "example:application": "webpack-dev-server --config ./example/application/webpack.config.js",
     "example:renderer": "webpack-dev-server --config ./example/decentralized-renderer/webpack.config.js",
     "example:legacy-renderer": "npx http-server ./example/legacy-renderer",
@@ -63,6 +63,7 @@
     "@typescript-eslint/parser": "4.18.0",
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
+    "cross-env": "^7.0.3",
     "eslint": "7.22.0",
     "eslint-config-prettier": "8.1.0",
     "eslint-plugin-jest": "24.3.2",

@@ -1,0 +1,11 @@
+import { FunctionComponent } from "react";
+import { Attachment, TemplateRegistry, TemplateWithTypes } from "./types";
+import { OpenAttestationDocument, v2, v3 } from "@govtechsg/open-attestation";
+export declare const repeat: (times: number) => (callback: (index: number) => any) => any[];
+export declare const noop: () => void;
+export declare const inIframe: () => boolean;
+export declare const isV2Document: (document: any) => document is v2.OpenAttestationDocument;
+export declare const isV3Document: (document: any) => document is v3.OpenAttestationDocument;
+export declare const isV2Attachment: (attachment: any) => attachment is v2.Attachment;
+export declare const getAttachmentMimeType: (attachment: Attachment) => string;
+export declare function documentTemplates(document: OpenAttestationDocument, templateRegistry: TemplateRegistry, attachmentToComponent: (attachment: Attachment, document: OpenAttestationDocument) => FunctionComponent | null): TemplateWithTypes[];
