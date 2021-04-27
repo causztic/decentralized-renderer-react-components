@@ -64,5 +64,6 @@ export const useChildFrame = function (
       run();
     }
   }, [status, props]);
+
   return [status === "CONNECTED", parentFrameConnection];
 };

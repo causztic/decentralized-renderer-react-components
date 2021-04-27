@@ -46,7 +46,7 @@ export const FrameConnector: FunctionComponent<FrameConnectorProps> = ({
   onConnected,
   style,
   className = "",
-  sandbox = "allow-scripts allow-same-origin allow-modals allow-popups",
+  sandbox = "allow-scripts allow-same-origin allow-modals allow-popups allow-downloads",
 }) => {
   const [onConnectedCalled, setOnConnectedCalled] = useState(false); // ensure on connected is called once only
   const iframe = useRef<HTMLIFrameElement>(null);

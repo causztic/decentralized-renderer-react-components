@@ -8,6 +8,7 @@ import { HostConnector } from "../frame/HostConnector";
 import { DomListener } from "../common/DomListener";
 import { noAttachmentRenderer } from "./NoAttachmentRenderer";
 import { OpenAttestationDocument, WrappedDocument, v2, v3 } from "@govtechsg/open-attestation";
+import { savePdf } from "../../service/save-pdf";
 
 const { trace } = getLogger("FramedDocumentRenderer");
 
@@ -91,6 +92,11 @@ export function FramedDocumentRenderer({
         return templates; // react-native expect to get the result directly
       } else if (action.type === "PRINT") {
         window.print();
+      } else if (action.type === "DOWNLOAD_PDF") {
+        const cert = window.document.getElementById("rendered-certificate") as HTMLElement;
+        savePdf(cert)
+          .then(() => trace("File successfully downloaded"))
+          .catch((error) => trace(error));
       } else {
         throw new Error(`Action ${JSON.stringify(action)} is not handled`);
       }
