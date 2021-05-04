@@ -11,7 +11,6 @@ const getDimensionsToCenterImage = (doc: jsPDF, canvas: HTMLCanvasElement) => {
   const widthRatio = pageWidth / canvas.width;
   const heightRatio = pageHeight / canvas.height;
   let ratio = Math.min(widthRatio, heightRatio);
-  ratio = 0.98 * ratio;
 
   const canvasWidth = canvas.width * ratio;
   const canvasHeight = canvas.height * ratio;
@@ -31,14 +30,14 @@ export const savePdf = async (element: HTMLElement | null) => {
 
   const pdf: jsPDF = new jsPDF("p", "mm", "a4");
 
-  // let width = pdf.internal.pageSize.getWidth();
-  // let height = pdf.internal.pageSize.getHeight();
-  // pdf.addImage(imageData, 'PNG', 0, 0, width, height);
-  // pdf.save("download.pdf");
+  let width = pdf.internal.pageSize.getWidth();
+  let height = pdf.internal.pageSize.getHeight();
+  pdf.addImage(imageData, 'PNG', 0, 0, width, height);
+  pdf.save("download.pdf");
 
-  const { marginX, marginY, canvasWidth, canvasHeight } = getDimensionsToCenterImage(pdf, canvas);
-  trace({ marginX, marginY, canvasWidth, canvasHeight });
+  // const { marginX, marginY, canvasWidth, canvasHeight } = getDimensionsToCenterImage(pdf, canvas);
+  // trace({ marginX, marginY, canvasWidth, canvasHeight });
 
-  pdf.addImage(imageData, "svg", marginX, marginY, canvasWidth, canvasHeight, "FAST");
-  pdf.save("cert.pdf");
+  // pdf.addImage(imageData, "svg", marginX, marginY, canvasWidth, canvasHeight, "FAST");
+  // pdf.save("cert.pdf");
 };
