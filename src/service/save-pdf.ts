@@ -1,25 +1,25 @@
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
-import { getLogger } from "../logger";
+//import { getLogger } from "../logger";
 
-const { trace } = getLogger("FramedDocumentRenderer");
+// const { trace } = getLogger("FramedDocumentRenderer");
 
-const getDimensionsToCenterImage = (doc: jsPDF, canvas: HTMLCanvasElement) => {
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const pageHeight = doc.internal.pageSize.getHeight();
+// const getDimensionsToCenterImage = (doc: jsPDF, canvas: HTMLCanvasElement) => {
+//   const pageWidth = doc.internal.pageSize.getWidth();
+//   const pageHeight = doc.internal.pageSize.getHeight();
 
-  const widthRatio = pageWidth / canvas.width;
-  const heightRatio = pageHeight / canvas.height;
-  let ratio = Math.min(widthRatio, heightRatio);
+//   const widthRatio = pageWidth / canvas.width;
+//   const heightRatio = pageHeight / canvas.height;
+//   let ratio = Math.min(widthRatio, heightRatio);
 
-  const canvasWidth = canvas.width * ratio;
-  const canvasHeight = canvas.height * ratio;
+//   const canvasWidth = canvas.width * ratio;
+//   const canvasHeight = canvas.height * ratio;
 
-  const marginX = (pageWidth - canvasWidth) / 2;
-  const marginY = (pageHeight - canvasHeight) / 2;
+//   const marginX = (pageWidth - canvasWidth) / 2;
+//   const marginY = (pageHeight - canvasHeight) / 2;
 
-  return { marginX, marginY, canvasWidth, canvasHeight };
-};
+//   return { marginX, marginY, canvasWidth, canvasHeight };
+// };
 
 export const savePdf = async (element: HTMLElement | null) => {
   if (element == null) return;
@@ -30,9 +30,9 @@ export const savePdf = async (element: HTMLElement | null) => {
 
   const pdf: jsPDF = new jsPDF("p", "mm", "a4");
 
-  let width = pdf.internal.pageSize.getWidth();
-  let height = pdf.internal.pageSize.getHeight();
-  pdf.addImage(imageData, 'PNG', 0, 0, width, height);
+  const width = pdf.internal.pageSize.getWidth();
+  const height = pdf.internal.pageSize.getHeight();
+  pdf.addImage(imageData, "PNG", 0, 0, width, height);
   pdf.save("download.pdf");
 
   // const { marginX, marginY, canvasWidth, canvasHeight } = getDimensionsToCenterImage(pdf, canvas);
